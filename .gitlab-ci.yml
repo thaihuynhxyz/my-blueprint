@@ -1,0 +1,26 @@
+# SPDX-FileCopyrightText: Copyright (c) 2025 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+# SPDX-License-Identifier: LicenseRef-NvidiaProprietary
+#
+# NVIDIA CORPORATION, its affiliates and licensors retain all intellectual
+# property and proprietary rights in and to this material, related
+# documentation and any modifications thereto. Any use, reproduction,
+# disclosure or distribution of this material and related documentation
+# without an express license agreement from NVIDIA CORPORATION or
+# its affiliates is strictly prohibited.
+
+image: python:3.10
+
+include:
+  # include the component located in the current project from the current SHA
+  - component: $CI_SERVER_FQDN/vn-rnd/foundational-blueprint/ci-components/helm-blueprint-compliance@0.1.0
+    inputs:
+      helm_chart_path: $CI_PROJECT_DIR/helm/gocd
+
+default:
+  cache:
+    paths:
+      - .cache/pip
+  tags:
+    - os/linux
+
+stages: [test]

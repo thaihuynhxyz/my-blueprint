@@ -1,2 +1,2 @@
-# my-blueprint
-My blueprint
+# your-blueprint
+Your blueprint
